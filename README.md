@@ -1,9 +1,12 @@
 # XiaoNeoPixel_RP2040
 
-So it happened... I had a project where I used the Seeedstudio XIAO RP2040 module and it has a nice and bright WS2812 LED on it.
+So it happened... I had a project where I used the Seeedstudio XIAO RP2040 module and it has a nice and bright WS2812 LED on it that I wanted to use.
 
 Naively I thought: Well, let's use one of the plenty available software libraries to control it.
 HOWEVER, all those RP2040 drivers use the PIO module to set the WS2812 Neopixel LED.
+a bit overkill to just control a single LED.
+
+But I did not want to waste any PIO, cause the PIO was of major interest for that project and it should stay free from any unrelated code.
 
 After some thinking I came to the conclusion that the UART-TX signal can be used to send the right datapattern.
 
