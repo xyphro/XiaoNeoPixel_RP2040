@@ -18,7 +18,7 @@ void xnp_init(void)
 	gpio_set_function(11, GPIO_FUNC_SIO);
 }
 
-void xnp_send(uint8_t r, uint8_t g, uint8_t b)
+void __not_in_flash_func(xnp_send)(uint8_t r, uint8_t g, uint8_t b)
 {
 	uint32_t dataword = (((uint32_t)g)<<16) | (((uint32_t)r)<<8) | (((uint32_t)b)<<0);
 
