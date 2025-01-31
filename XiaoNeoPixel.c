@@ -11,11 +11,11 @@ void xnp_init(void)
 	uart_set_format(uart0, 6, 1, UART_PARITY_NONE);
 	gpio_set_function (12, GPIO_FUNC_UART);
 	iobank0_hw->io[12].ctrl = (iobank0_hw->io[12].ctrl & ~(3u<<8)) | (1u<<8); // invert UART output signal
-    gpio_init(11);
+	gpio_init(11);
 	gpio_set_dir(11, GPIO_OUT);    
-    gpio_put(11, 1);
+	gpio_put(11, 1);
 	gpio_set_drive_strength(11, GPIO_DRIVE_STRENGTH_12MA); // set drive strength of IO to maximum to get a bright LED
-    gpio_set_function(11, GPIO_FUNC_SIO);
+	gpio_set_function(11, GPIO_FUNC_SIO);
 }
 
 void xnp_send(uint8_t r, uint8_t g, uint8_t b)
@@ -26,8 +26,8 @@ void xnp_send(uint8_t r, uint8_t g, uint8_t b)
 	{
 		dataword <<= 1;
 		if (dataword & (1<<24))
-		    uart_putc(uart0, 0x3C); // send a 1
+		    uart_putc(uart0, 0x30); // send a 1
 		else
-		    uart_putc(uart0, 0x30); // send a 0
+		    uart_putc(uart0, 0x3C); // send a 0
 	}
 }
